@@ -22,8 +22,8 @@
                 "description": {
                     "type": "description"
                 },
-                "checkout_buutton": {
-                    "type": "checkout_buutton"
+                "checkout_button": {
+                    "type": "checkout_button"
                 }
             },
             "block_order": [

@@ -1,4 +1,12 @@
-<div class="relative bg-white" x-data="{mobileMenuOpen:false, searchBarOpen:false }">
+{%liquid
+                    if section.settings.menu.links == blank
+                        assign main_menu_linklist = linklists[section.settings.menu].links
+                    else
+                        assign main_menu_linklist = section.settings.menu.links
+                    endif
+                %}
+
+<div class="relative bg-white" x-cloak x-data="{mobileMenuOpen:false, searchBarOpen:false }">
     <div class="mx-auto px-4 sm:px-6">
         <div class="flex justify-center items-center py-6 md:justify-start md:space-x-10">
             <!-- STORE NAME / STORE LOGO -->
@@ -14,11 +22,11 @@
                 </button>
             </div>
             <!-- NAV MENU -->
-                                                                                                                                                                                                                                                                                                                                                                  <!-- FOR SUB MENUS -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <!-- FOR SUB MENUS -->
             <nav class="hidden md:flex justify-center space-x-10">
-                {% for link in section.settings.menu.links %}
-                    {% if link.links !=blank
-        %}
+
+                {% for link in main_menu_linklist %}
+                    {% if link.links !=blank %}
                         {%assign link_handle = link.handle | replace:"-","_" %}
                         <div " class=" relative" x-data=" { {{link_handle}} :false }">
                             <button x-on:click="{{ link_handle }} = ! {{ link_handle }}" class="inline-flex items-center">
