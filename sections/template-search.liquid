@@ -1,0 +1,72 @@
+<div class="container mx-auto">
+
+
+    {% paginate search.results by section.settings.result_amount  %}
+        <h1 class="text-xl my-4 text-center">
+            Search Results
+        </h1>
+
+        <div class="flex justify-center items-center">
+            <form action="{{routes.search_url}}" method="get" class="border flex rounded">
+                <input class="px-4 py-2 w-80 " type="search" name="q" placeholder="Search" value="{{search.terms | escape}}">
+
+                <button class="bg-gray-900 hover:bg-gray-700 text-white border px-4" type="button">
+                    Search
+                </button>
+            </form>
+
+        </div>
+
+        {% if search.performed %}
+            {% if search.results.size>0 %}
+                <div class="max-w-6xl mx-auto">
+                    <p class="text-gray-500 text-center my-10">
+                        {{search.results.size}}
+                        results found for
+                        <em>
+                            "
+                            <strong>{{search.terms | escape}}</strong>
+                            "
+                        </em>
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {% for item in search.results %}
+                            {% case item.object_type %}
+                                {% when "product" %}
+                                    {%render "product-card", product:item%}
+
+                                {% else %}
+
+                            {% endcase %}
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            {% else %}
+                <div class="text-center my-4">
+                    <p>No results found for:
+                        <strong>{{search.terms | escape}}</strong>. Please try an alternative keyword</p>
+                </div>
+            {% endif %}
+        {% endif %}
+        {%render "pagination", pagination:paginate%}
+    {% endpaginate %}
+
+</div>
+
+
+{% schema %}
+{
+    "name":"Search",
+    "settings":[
+    {
+        "type":"range",
+        "id":"result_amount",
+        "min":3,
+        "max":15,
+        "default":5,
+        "label":"Number of Results"
+    }]
+}
+{% endschema %}

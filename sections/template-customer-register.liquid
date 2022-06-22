@@ -1,0 +1,81 @@
+<div class="h-full flex items-center justify-center py-12 px-4 md:px-4 lg:px-8">
+    {% if customer %}
+<h1>hi</h1>
+    {% else %}
+        
+        
+    <div class="max-w-md w-full space-y-8">
+        <div>
+            <h1 class="text-center text-3xl font-bold my-6">Register Account</h1>
+        </div>
+        <div class="max-w-md w-full space-y-8">
+            {%form "create_customer"%}
+
+            {% if form.errors %}
+
+            <div class="relative border border-red-400 bg-red-100 text-red-700 px-4 py-3" role="alert">
+                <strong class="font-bold">
+                    🚨 Oops! Fix the following issues: 🚨
+                </strong>
+                <p class="block sm:inline">
+                    {{form.errors|default_errors}}
+                </p>
+            </div>
+<!-- 
+            {% else %}
+            <div class="relative border border-green-400 bg-green-100 text-green-900 px-4 py-3" role="dialog">
+                <strong class="font-bold">
+                    ✅ Success! Look below ✅
+                </strong>
+                <p class="block sm:inline">
+                    {{form.errors|default_errors}}
+                </p>
+            </div> -->
+            {% endif %}
+            <div class="my-2">
+                <label class="sr-only" for="first_name">First Name</label>
+                <input type="text" name="customer[first_name]" id="first_name"
+                autocomplete="given-name" class=" rounded-lg relative block w-full px-3 py-2 border"
+                placeholder="Tunde"
+            >
+            </div>
+            <div class="my-2">
+                <label class="sr-only" for="last_name">Last Name</label>
+                <input type="text" name="customer[last_name]" id="last_name"
+                autocomplete="family-name" class=" rounded-lg relative block w-full px-3 py-2 border"
+                placeholder="Kumasi"
+            >
+            </div>
+            <div class="my-2">
+                <label class="sr-only" for="birthday">Birthday</label>
+                <input type="date" name="customer[note][Birthday]" id="birthday"
+                class=" rounded-lg relative block w-full px-3 py-2 border"
+            >
+            </div>
+            <div class="my-2">
+                <label class="sr-only" for="email_address">Email Address</label>
+                <input type="email" name="customer[email]" id="email_address"
+                autocomplete="email" class=" rounded-lg relative block w-full px-3 py-2 border"
+                placeholder="Email Address"
+            >
+            </div>
+            <div class="my-2">
+                <label class="sr-only" for="password">Password</label>
+                <input type="password" name="customer[password]" id="password"
+                autocomplete="new-password" class=" rounded-lg relative block w-full px-3 py-2 border"
+                placeholder="********">
+            </div>
+
+
+            <div>
+                <button type="submit" class="relative w-full py-2 px-4 text-sm font-medium text-white bg-gray-600 hover:bg-gray-900">
+                    Create Account
+                </button>
+            </div>
+            {%endform%}
+        </div>
+    </div>
+    {% endif %}
+
+
+</div>

@@ -1,0 +1,11 @@
+{
+  "name": "Customer: Account",
+  "sections": {
+    "template": {
+      "type": "template-customer-account"
+    }
+  },
+  "order": [
+    "template"
+  ]
+}

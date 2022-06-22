@@ -1,0 +1,253 @@
+<article class="py-8" itemscope itemtype="https://schema.org/BlogPosting">
+  {% for block in section.blocks %} 
+    {% case block.type %}
+        {% when "article_title" %}
+
+            <div class="flex items-center justify-center">
+                <div class="max-w-7xl text-center">
+                <a
+                    href="{{ blog.url }}"
+                    class="text-base uppercase text-gray-500 hover:text-gray-900 font-bold"
+                    >{{ blog.title }}</a
+                >
+                <h1 class="text-4xl md:text-6xl font-medium" itemprop="headline"">{{ article.title }}</h1>
+                </div>
+            </div>
+
+        {% when "article_author" %}
+            <div class="flex items-center justify-center" itemscope itemtype="https://schema.org/Person" itemprop="author">
+                <div class="max-w-7xl text-center" >
+                {% if section.settings.enable_author %}
+                <small itemprop="name">{{ article.author }}</small>
+                <small hidden itemprop="url">{{article.author | replace:" ","-" | append: ".com"}}</small>
+                {% endif %}
+                </div>
+            </div>
+
+            {% when "article_published_date" %}
+                <div class="flex items-center justify-center">
+                    <div class="max-w-7xl text-center">
+                    {% if section.settings.enable_pub_date %}
+
+                    <time
+                        itemprop="datePublished dateCreated"
+                        datetime="{{ article.published_at | date: "%Y-%m-%d"  }}"
+                    >
+                        {{ article.published_at | date: format:'on_date' }}
+                    </time>
+                    {% endif %}
+                    </div>
+                </div>
+
+            {% when "article_content" %}
+                <div class="flex items-center justify-center text-justify" itemprop="articleBody">
+                    <div class="max-w-4xl p-3">
+                        {{ article.content }}
+                    </div>
+                </div>
+
+            {% when "featured_image" %} 
+                <div 
+                class="max-w-7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden my-4"
+                itemprop="image"
+                >
+                    {% if article.image != blank %}
+                        <img 
+                        src="{{ article.image | img_url: "large" }}"
+                        alt="{{ article.image.alt }}"
+                        loading="lazy"
+                        itemprop="image"
+                        class="w-full h-80 md:h-96 object-cover object-center"/> 
+                    {% else %} 
+                        {% assign placeholder_image = "lifestyle-2" %}
+                        {{placeholder_image | placeholder_svg_tag: "w-full h-80 md:h-96 object-cover object-center p-5"}}
+                    {% endif %}
+                </div>
+        {% endcase %} 
+    {%endfor %}
+</article>
+
+{% if blog.comments_enabled? %}
+    <div class="my-8" id="comments">
+        {% if article.comments_count > 0 %}
+            <div class="flex-1 items-center justify-center mx-auto max-w-4xl px-4">
+                <h1 class="text-lg mb-4 font-medium">
+                    See what the fans think 🗣
+                </h1>
+                {% paginate article.comments by 5 %}
+                    {% for comment in article.comments %}
+                        <div class="flex-1 border my-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                            <span class="comment-author">
+                                {{comment.author}}
+                            </span>
+                            <span class="text-xs text-gray-400">
+                                {{comment.created_at | date: format: "abbreviated_date"}}
+                            </span>
+                            <p class="text-sm">
+                                {{comment.content}}
+                            </p>
+                        </div>
+                    {% endfor %}
+            <div class="6xl mx-auto">
+                {%render "pagination", pagination: paginate%}
+            </div>
+                {% endpaginate %}
+            </div>
+            {% else %}
+                No comments right now... 💬
+        {% endif %}
+    </div>
+
+    <div class="my-mb-8" id="comment_form">
+        {%form "new_comment", article%}
+
+            <div class="flex-1 mx-auto items-center justify-center max-w-4xl px-4">
+                {% if form.errors %}
+                    <div class="border p-5">
+                        <div class="flex flex-row items-center w-full my-3">
+                            <div class="text-red-500">
+                                {%render "icon-failed"%}
+                            </div>
+                            <div class="text-sm font-medium ml-3">
+                                Oops!!!!
+                            </div>
+                        </div>
+                        <ul class="px-4 mb-3 ml-7 list-decimal">
+                            {% for error in form.errors %}
+                                <li>
+                                    <span>{{form.errors.messages[error]}}</span>
+                                </li>
+                                
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                {% elsif form.posted_successfully? %}
+                        <div class="flex flex-row items-center w-full my-3 p-5">
+                            <div class="text-green-500">
+                                {%render "icon-success"%}
+                            </div>
+                            <div class="text-sm font-medium ml-3">
+                                Comment Posted Successfully!
+                            </div>
+                        </div>
+                {% endif %}
+                <div class="px-1 md:flex mb-3">
+                    <div class="px-3 md:w-1/2">
+                        <label for="comment_author" class="text-gray-700 font-medium uppercase text-xs mb-2">Name: 👤</label>
+                        <input 
+                        type="text" 
+                        name="comment[author]"
+                        id="comment_author"
+                        class="w-full text-gray-700 border-2 py-2 px-4 mb-3 focus:outline-none"
+                        required
+                        placeholder="Tunde Kumasi"/>
+
+                    </div>
+                    <div class="px-3 md:w-1/2">
+                        <label for="comment_email" class="text-gray-700 font-medium uppercase text-xs mb-2">Email: 📧</label>
+                        <input 
+                        type="email" 
+                        name="comment[email]"
+                        id="comment_email"
+                        class="w-full text-gray-700 border-2 py-2 px-4 mb-3 focus:outline-none"
+                        required
+                        placeholder="tunde-kumasi@email.com"/>
+                    </div>
+                </div>
+                <div class="px-1 md:flex mb-3">
+                    <div class="md:w-full px-3">
+                        <label for="comment_content" class="text-gray-700 font-medium uppercase text-xs mb-2">Comment: 💬</label>
+                        <textarea 
+                        name="comment[body]"
+                        id="comment_content"
+                        class="w-full resize-none text-gray-700 border-2 h-20 py-2 px-3 focus:outline-none"
+                        required>
+                        </textarea>
+                    </div>
+                </div>
+                <div class="px-1 md:flex mb-3">
+                    <div class="md:w-full px-3">
+                        <input value="Post Comment! 🚀" type="submit" class="w-full cursor-pointer px-4 py-2 border text-base font-medium text-white bg-gray-900 hover:bg-gray-500">
+                    </div>
+                </div>
+            </div>
+
+        {%endform%}
+    </div>
+    
+{% endif %}
+
+
+<script type="application/ld+json" >
+    {
+        "@context":"https://schema.org",
+        "@type":"BlogPosting",
+            "headline":{{article.title | json}},
+            "publisher":{
+                "@type":"Organization",
+                "name":{{shop.name|json}}
+            },            
+            "articleBody":{{article.content|strip_html|json}},
+            {%if article.excerpt !=blank%}
+                "description":{{article.excerpt | strip_html| json}},
+            {%endif%}
+            {%if article.image !=blank%}
+                "image":[
+                    {{article.image|img_url:"medium" | prepend: "https:"|json}}
+                ],
+            {%endif%}
+            "datePublished":{{article.published_at |date: format:"default"| json }},
+            "dateCreated":{{article.created_at |date: format:"default"|json }},
+            "author":{
+                "@type":"Person",
+                "name":{{article.author|json}}
+            }
+    }
+</script>
+
+
+<!-- prettier-ignore -->
+{% schema %}
+
+{
+    "name": "Template Article",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable_author",
+            "default": true,
+            "label": "Display Author"
+        }, {
+            "type": "checkbox",
+            "id": "enable_pub_date",
+            "default": true,
+            "label": "Display 'Published' Date"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "article_title",
+            "name": "Title",
+            "limit": 1
+        }, {
+            "type": "article_author",
+            "name": "Author",
+            "limit": 1
+        }, {
+            "type": "article_published_date",
+            "name": "Published Date",
+            "limit": 1
+        }, {
+            "type": "featured_image",
+            "name": "Thumbnail",
+            "limit": 1
+        }, {
+            "type": "article_content",
+            "name": "Content",
+            "limit": 1
+        }
+    ]
+}
+
+{% endschema %}
