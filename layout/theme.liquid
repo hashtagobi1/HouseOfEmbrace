@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{{ page_title }}</title>
-        <meta charset="utf-8"/>
-        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
-        <meta name="description" content="{{ page_description | escape }}"/>
-        <link rel="canonical" href="{{ canonical_url }}"/>
-        <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport"/>
-        {{
-      content_for_header
-    }}
-        <!-- Header hook for plugins -->
-        {{
-      "tailwind.css" | asset_url | stylesheet_tag
-    }}
+
+<head>
+  <title>{{ page_title }}</title>
+  <meta charset="utf-8" />
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+  <meta name="description" content="{{ page_description | escape }}" />
+  <link rel="canonical" href="{{ canonical_url }}" />
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,600;1,6..96,700;1,6..96,800;1,6..96,900&family=Questrial&display=swap"
+    rel="stylesheet">
+  <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport" />
+  {{
+  content_for_header
+  }}
+  <!-- Header hook for plugins -->
+  {{
+  "tailwind.css" | asset_url | stylesheet_tag
+  }}
 
 
-        <script defer src="{{ "application.js" | asset_url }}"></script>
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script defer src="{{ " application.js" | asset_url }}"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 
-        <style>
-      [x-cloak] { display: none !important; }
-    </style>
-    </head>
-    <body>
-        {%section "header"%}
+  <style>
+    [x-cloak] {
+      display: none !important;
+    }
+  </style>
+</head>
 
-        <main role="main">
-            {{ content_for_layout }}
-        </main>
-    </body>
+<body class="bg-HOE_BACKGROUND">
+  {%section "header"%}
+
+  <main class="font-hoe_Quest  " role="main">
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+</body>
+
 </html>

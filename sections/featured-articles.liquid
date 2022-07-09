@@ -1,0 +1,87 @@
+{%liquid
+if section.settings.featured_articles.links == blank
+assign featured_articles_linklist = linklists[section.settings.featured_articles].links
+
+else
+assign featured_articles_linklist = section.settings.featured_articles.links
+endif
+%}
+
+<style>
+    .shine {
+        letter-spacing: 2px;
+        background: linear-gradient(90deg,  #fff, #000);
+        background-repeat: no-repeat;
+        background-size: 90%;
+
+        animation: animate 3s infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(255, 255, 255, 0);
+
+    }
+
+    @keyframes animate {
+        0% {
+            background-position: -500%;
+        }
+
+        100% {
+            background-position: 500%;
+        }
+    }
+</style>
+
+<div>
+
+
+
+    {% for link in featured_articles_linklist %}
+    {% assign feat_img = link.url %}
+    <a href="{{ link.url }}">
+
+        <h1>{{ link.title }}</h1>
+    </a>
+
+    <p>
+        {{ link.url }}
+    </p>
+
+    <img {{ feat_img | image_url }} />
+
+
+    {% endfor %}
+    <div class="">
+
+        <h6 class="text-2xl shine font-bold text-center">
+            {{ section.settings.slogan }}
+        </h6>
+    </div>
+
+</div>
+
+
+
+
+{% schema %}
+{
+"name": "Featured Articles",
+"settings": [
+{
+"type": "link_list",
+"id": "featured_articles",
+"label": "Featured Articles"
+},
+{
+"type": "text",
+"id": "slogan",
+"label": "Slogan",
+"default": "Creating confidence for the modern day woman."
+}
+],
+"presets": [
+{
+"name": "Featured Articles"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,106 @@
+<style>
+    .newsletterBG{
+        background-color: {{ section.settings.newsletter_background }};
+    }
+</style>
+
+<!-- main container -->
+<div class="w-full flex justify-around items-center text-center newsletterBG">
+    <!-- img -->
+    {% if section.settings.newsletter_image %}
+    <div class="">
+        
+      <img 
+      class="w-full h-80 md:h-96 object-cover object-center" 
+      loading="lazy"
+      src=" {{ section.settings.newsletter_image | image_url }}" 
+      alt="{{ section.settings.newsletter_image.alt }}">
+    </div>
+    {% endif %}
+
+    <!-- sign up box -->
+    <div class="space-y-8 ">
+
+        <div class="">
+
+            <!-- title -->
+            <h1 class="font-extrabold text-3xl mb-4 md:text-end">
+                {{ section.settings.newsletter_title }}
+            </h1>
+            <!-- CTA -->
+            <p class="max-w-sm md:text-end ">{{ section.settings.newsletter_description }}</p>
+        </div>
+        {% form 'customer' %}
+        <div class="flex flex-col justify-center items-center md:items-end">
+
+
+            <div class="space-y-5">
+
+                <!-- first name box -->
+                <div class="flex justify-between items-center">
+                    <label class="mr-5" for="first-name">First Name:</label>
+                    <input class="inputField" placeholder="Anna" type="text" name="contact[first-name] id=" first-name">
+                </div>
+                
+                
+                <!-- last name box -->
+                <div class="flex justify-between items-center">
+                    <label for="email">Email:</label>
+                    <input placeholder="annamarie@gmail.com" autocomplete="email" class="max-w-md inputField" type="email"
+                    name="contact[email]" id="email" />
+                </div>
+            </div>
+
+            <!-- sign up button -->
+            <div>
+                <input type="submit" class="buttonShadowALWAYS cursor-pointer font-2xl m-5 p-3 rounded"
+                    value="{{ section.settings.newsletter_sign_up }}" />
+            </div>
+        </div>
+        {% endform %}
+    </div>
+
+</div>
+
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "let's build community"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_sign_up",
+      "label": "Newsletter Sign Up",
+      "default": "Sign me up!"
+    },
+    {
+      "type": "image_picker",
+      "id": "newsletter_image",
+      "label": "Newsletter Image"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_description",
+      "label": "Newsletter Description",
+      "default": "join a flourishing group of women dedicated to being better, healthier, + receive discounts of products?"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_background",
+      "label": "Newsletter BG-Color",
+      "default": "#B9E1A8"
+    }
+  ],
+  "presets": [
+    {
+      "name": "newsletter"
+    }
+  ]
+}
+{% endschema %}

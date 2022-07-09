@@ -23,9 +23,6 @@
 
                             <tr class="table-row">
                                 <td class="py-4 px-2 flex flex-col justify-center">
-                                    <!-- <script>
-                                        console.log({{item|json}})
-                                    </script> -->
                                     <a href="{{item.url}}">
                                         {% if item.image %}
                                             <img class="w-20 h-20 object-cover border" src="{{item.image | img_url: "small"}}" alt="{{item.title | escape}}">
@@ -113,9 +110,9 @@
                 Your cart is empty
             </h1>
         </div>
-        <div class="my-4 py-4">
-            <a href="{{routes.all_products_collection_url}}" class="border border-gray-600 text-white rounded-lg shadow-2xl bg-gray-600 px-8 py-3">
-                Continue Shopping...
+        <div class="my-4 py-4 motion-safe:animate-bounce ">
+            <a href="{{routes.all_products_collection_url}}" class="text-black border border-gray-600 text-white rounded-lg buttonShadowALWAYS bg-gray-600 px-8 py-3">
+                Start Shopping...
             </a>
         </div>
     </div>

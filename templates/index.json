@@ -1,12 +1,22 @@
 {
-    "name":"Index",
-    "sections":{
-        "featured-collection":{
-            "type":"featured-collection",
-            "settings":{
-                "featured_collection":"all"
+    "name": "Index",
+    "sections": {
+        "featured-collection": {
+            "type": "featured-collection",
+            "settings": {
+                "featured_collection": "all"
             }
+        },
+        "newsletter": {
+            "type": "newsletter"
+        },
+        "featured-articles":{
+            "type":"featured-articles"
         }
     },
-    "order":["featured-collection"]
+    "order": [
+        "featured-collection",
+        "newsletter",
+        "featured-articles"
+    ]
 }

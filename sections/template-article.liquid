@@ -94,7 +94,11 @@
                 {% endpaginate %}
             </div>
             {% else %}
-                No comments right now... 💬
+            <div class="flex-1 items-center justify-center mx-auto max-w-4xl px-4">
+                <p class="text-sm">
+                    No comments right now... 💬
+                </p>
+            </div>
         {% endif %}
     </div>
 
@@ -141,7 +145,7 @@
                         id="comment_author"
                         class="w-full text-gray-700 border-2 py-2 px-4 mb-3 focus:outline-none"
                         required
-                        placeholder="Tunde Kumasi"/>
+                        placeholder="Anna Marie"/>
 
                     </div>
                     <div class="px-3 md:w-1/2">
@@ -152,7 +156,7 @@
                         id="comment_email"
                         class="w-full text-gray-700 border-2 py-2 px-4 mb-3 focus:outline-none"
                         required
-                        placeholder="tunde-kumasi@email.com"/>
+                        placeholder="anna-marie@email.com"/>
                     </div>
                 </div>
                 <div class="px-1 md:flex mb-3">
