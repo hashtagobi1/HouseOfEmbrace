@@ -7,10 +7,13 @@ assign featured_articles_linklist = section.settings.featured_articles.links
 endif
 %}
 
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
 <style>
     .shine {
         letter-spacing: 2px;
-        background: linear-gradient(90deg,  #fff, #000);
+        background: linear-gradient(90deg, #fff, #000);
         background-repeat: no-repeat;
         background-size: 90%;
 
@@ -29,29 +32,76 @@ endif
             background-position: 500%;
         }
     }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: black;
+        top: auto !important;
+        height: 20px;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 20px;
+    }
+
+    .swiper-pagination-bullet-active {
+        color: black !important;
+        background: black !important;
+        bottom: 0 !important;
+    }
 </style>
 
 <div>
 
 
 
-    {% for link in featured_articles_linklist %}
-    {% assign feat_img = link.url %}
-    <a href="{{ link.url }}">
+    <div class="flex flex-col justify-center items-center">
 
-        <h1>{{ link.title }}</h1>
-    </a>
+        <h1 class="text-emerald-600 text-4xl">flick thru our articles</h1>
 
-    <p>
-        {{ link.url }}
-    </p>
-
-    <img {{ feat_img | image_url }} />
+        <div class="swiper">
+            <div class="swiper-wrapper">
 
 
-    {% endfor %}
+
+
+
+                {% for link in featured_articles_linklist %}
+                {% assign shortURL = link.url | remove: "/blogs/"%}
+                {% assign article = articles[shortURL] %}
+                {% assign imageURL = article.image %}
+                <div
+                    class="swiper-slide  max-w-xs rounded-lg   relative flex justify-center items-center">
+                    <div class=" bottom-5">
+                        <h1 class="absolute bottom-5 text-xl text-blue-600">{{article.title | link_to: article.url}}
+                        </h1>
+                    </div>
+
+                    <div class="max-3xl h-94">
+
+                        {% if article.image != blank %}
+                        <img src="{{imageURL | img_url: 'master'}}" class="defaultImage" alt="{{article.image.alt}}" />
+                        {% else %}
+                        {{ 'product-1' | placeholder_svg_tag: 'defaultImage' }}
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- </div> -->
+                {% endfor %}
+            </div>
+            <div class="flex justify-center items-center">
+
+                <div class="swiper-pagination bg-white "></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+
+    </div>
+
     <div class="">
-
         <h6 class="text-2xl shine font-bold text-center">
             {{ section.settings.slogan }}
         </h6>
@@ -59,8 +109,30 @@ endif
 
 </div>
 
-
-
+<script>
+    const swiper = new Swiper(".swiper", {
+        effect: "cards",
+        direction: "horizontal",
+        loop: true,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        navigation: {
+            prevEl: ".swiper-button-prev",
+            nextEl: ".swiper-button-next"
+        }
+    });
+</script>
 
 {% schema %}
 {
