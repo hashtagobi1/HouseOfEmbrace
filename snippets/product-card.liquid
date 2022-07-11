@@ -1,9 +1,9 @@
 <div class="w-full py-6 px-3">
     <div class="border bg-white shadow-lg rounded-lg overflow-hidden">
         <a href="{{product.url}}" class="">
-            <div class="h-80 overflow-hidden transition duration-1000 ease-in-out hover:scale-105">
+            <div class="h-80 overflow-hidden transition duration-500 ease-in-out hover:scale-105">
                 {% if product.featured_image %}
-                <img class="w-full h-full object-cover" src="{{product.featured_image | img_url:" medium" }}"
+                <img class="w-full h-full object-cover" src="{{product.featured_image | img_url:"master" }}"
                     alt="{{product.featured_image.alt}}">
                 {% else %}
                 {{"product-3" | placeholder_svg_tag: "w-full h-full object-cover bg-gray-50"}}

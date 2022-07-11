@@ -15,8 +15,8 @@
         }
     },
     "order": [
+        "featured-articles",
         "featured-collection",
-        "newsletter",
-        "featured-articles"
+        "newsletter"
     ]
 }

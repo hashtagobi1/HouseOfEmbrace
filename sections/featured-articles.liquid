@@ -50,6 +50,32 @@ endif
         background: black !important;
         bottom: 0 !important;
     }
+
+
+    .mag {
+        filter: drop-shadow(10px 10px 0px #000);
+        background-color: white;
+        /* transition: all 250ms linear; */
+        /* border: 1px solid rgb(75 85 99); */
+        /* border-radius: 0.5em; */
+
+    }
+
+    .textStroke {
+        /* color: black; */
+        /* -webkit-text-fill-color: red; */
+        /* Will override color (regardless of order) */
+        -webkit-text-stroke: 1px #000;
+    }
+
+    .textMag {
+        filter: drop-shadow(3px 3px 0px #000);
+
+    }
+
+    .magContainer:hover {
+        /* filter: brightness(120%); */
+    }
 </style>
 
 <div>
@@ -58,7 +84,7 @@ endif
 
     <div class="flex flex-col justify-center items-center">
 
-        <h1 class="text-emerald-600 text-4xl">flick thru our articles</h1>
+        <!-- <h1 class="text-emerald-600 text-4xl">flick thru our articles</h1> -->
 
         <div class="swiper">
             <div class="swiper-wrapper">
@@ -71,30 +97,40 @@ endif
                 {% assign shortURL = link.url | remove: "/blogs/"%}
                 {% assign article = articles[shortURL] %}
                 {% assign imageURL = article.image %}
-                <div
-                    class="swiper-slide  max-w-xs rounded-lg   relative flex justify-center items-center">
-                    <div class=" bottom-5">
-                        <h1 class="absolute bottom-5 text-xl text-blue-600">{{article.title | link_to: article.url}}
-                        </h1>
-                    </div>
+                <div class="swiper-slide max-w-lg h-32 mt-2 rounded-lg mag relative flex justify-center items-center">
 
-                    <div class="max-3xl h-94">
 
-                        {% if article.image != blank %}
-                        <img src="{{imageURL | img_url: 'master'}}" class="defaultImage" alt="{{article.image.alt}}" />
-                        {% else %}
-                        {{ 'product-1' | placeholder_svg_tag: 'defaultImage' }}
-                        {% endif %}
+                    <div class="overflow-hidden h-halfScreen hover:opacity-50 magContainer">
+
+
+
+                        <a href="{{article.url}} ">
+
+                            {% if article.image != blank %}
+                            <img src="{{imageURL | img_url: 'master' }}"
+                                class="defaultImage rounded-lg transition duration-500 ease-in-out hover:scale-125 hover:blur-sm "
+                                alt="{{article.image.alt}}" />
+                            {% else %}
+                            {{ 'product-1' | placeholder_svg_tag: 'defaultImage rounded-lg transition duration-500
+                            ease-in-out hover:scale-125 hover:blur-sm ' }}
+                            {% endif %}
+                        </a>
+
+
+                        <h1
+                            class="absolute rounded-lg lowercase font-extrabold p-4 textMag text-center blur-sm shadow-2xl text-white hover:text-black top-1 text-4xl">
+                            {{article.title}}</h1>
                     </div>
                 </div>
                 <!-- </div> -->
                 {% endfor %}
             </div>
-            <div class="flex justify-center items-center">
 
-                <div class="swiper-pagination bg-white "></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+            <div class="flex justify-around mt-2 item-center pt-10">
+
+                <div class="swiper-pagination pt-2"></div>
+                <!-- <div class="swiper-button-prev mt-0"></div> -->
+                <!-- <div class="swiper-button-next mt-0"></div> -->
             </div>
         </div>
 
@@ -110,11 +146,46 @@ endif
 </div>
 
 <script>
+
+    // const screenWidth = screen.width
+
+    // function renderEffect() {
+    //     if (screenWidth < 640) {
+    //         return "cards"
+    //     }
+    //     return "coverflow"
+    // }
+
+
+    // const renderE = () => {
+    //     let width
+    //     let effectType = "coverflow"
+    //     window.onresize = window.onload = function () {
+    //         width = this.innerWidth
+    //         console.log(width)
+    //         if (width < 640) {
+    //             effectType = "cards"
+    //             console.log({Card: effectType })
+    //         } else if (width > 640) {
+    //             console.log("coverflow")
+    //             console.log({CoverFlow: effectType })
+    //             effectType = "coverflow"
+    //         }
+    //     }
+    //     console.log({ ET: effectType })
+    //     return effectType
+
+    // }
+
     const swiper = new Swiper(".swiper", {
-        effect: "cards",
+        effect: "coverflow",
         direction: "horizontal",
         loop: true,
         grabCursor: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
         centeredSlides: true,
         slidesPerView: "auto",
         coverflowEffect: {

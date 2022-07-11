@@ -11,12 +11,9 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        "94": "22rem"
+        "94": "22rem",
+        "halfScreen":"80vh"
       },
-      // basicShadow: {
-      //   filter: "drop-shadow(5px 5px 0px #000)",
-      //   border: "10px solid red"
-      // },
       fontFamily: {
         hoe_Quest: ['Questrial', "sans-serif"],
         hoe_Bodoni: ['Bodoni Moda', "serif"]

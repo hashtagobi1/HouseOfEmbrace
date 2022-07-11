@@ -12,11 +12,11 @@
                         <div class="bg-white shadow-2xl rounded-lg overflow-hidden">
                             {% if article.image %}
                                 <a href="{{article.url}}" id="GSAP_articleImage">
-                                    <img class="w-full h-80 object-cover" src="{{ article.image | img_url:"medium" }}" alt="{{article.image.alt}}"/>
+                                    <img class="w-full h-80 object-cover" src="{{ article.image | img_url:"master" }}" alt="{{article.image.alt}}"/>
                                 </a>
                             {% else %}
                                 <a href="{{article.url}}" id="GSAP_articleImage">
-                                    {{"image"| placeholder_svg_tag: "w-full h-80 object cover bg-gray-100"}}
+                                    {{"image"| placeholder_svg_tag: "w-full h-80 object-cover bg-gray-100"}}
                                 </a>
                             {% endif %}
 
