@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       height: {
         "94": "22rem",
-        "halfScreen":"80vh"
+        "halfScreen":"40vh"
       },
       fontFamily: {
         hoe_Quest: ['Questrial', "sans-serif"],
@@ -22,7 +22,8 @@ module.exports = {
         HOE_MAIN: "#CEADDF",
         HOE_MAIN_LIGHT: "#ebdef2",
         HOE_GREEN_WARM: "#B9E1A8",
-        HOE_BACKGROUND: "#FFDCA8"
+        HOE_BACKGROUND: "#F6F2E9",
+        HOE_BODY: "#E6E1CA",
       }
     },
   },
