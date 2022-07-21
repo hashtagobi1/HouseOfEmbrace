@@ -1,22 +1,25 @@
 {
-    "name": "Index",
-    "sections": {
-        "featured-collection": {
-            "type": "featured-collection",
-            "settings": {
-                "featured_collection": "all"
-            }
-        },
-        "newsletter": {
-            "type": "newsletter"
-        },
-        "featured-articles":{
-            "type":"featured-articles"
-        }
+  "sections": {
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "featured_collection": "all"
+      }
     },
-    "order": [
-        "featured-articles",
-        "featured-collection",
-        "newsletter"
-    ]
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+      }
+    },
+    "featured-articles": {
+      "type": "featured-articles",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "featured-articles",
+    "featured-collection",
+    "newsletter"
+  ]
 }
