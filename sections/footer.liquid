@@ -10,7 +10,7 @@ endif
 <style>
     .footer {
         background-color: {{section.settings.background_color}};
-    }
+        }
 </style>
 
 <!-- main container -->
@@ -30,13 +30,24 @@ endif
     <!-- links container -->
     <div class="flex justify-between items-center flex-row ">
         <!-- socials -->
-        <div class="space-y-4">
-            <p>insta</p>
-            <p>tiktok</p>
-            <p>twitter</p>
-            <p>facebook</p>
-            <p>email</p>
-        </div>
+    <div class="flex flex-col mt-5 pb-5" id="socials">
+      <!-- socials -->
+      <a href="{{section.settings.instagram_link}}" target="_blank" class="rounded-full  p-1 mr-4">
+        {%render "instagram" %}
+      </a>
+      <a href="{{section.settings.twitter_link}}" target="_blank" class="rounded-full  p-1 mr-4">
+        {%render "twitter" %}
+      </a>
+      <a href="{{section.settings.tiktok_link}}" target="_blank" class="rounded-full  p-1 mr-4">
+        {%render "tiktok" %}
+      </a>
+      <a href="{{section.settings.facebook_link}}" target="_blank" class="rounded-full  p-1 mr-4">
+        {%render "facebook" %}
+      </a>
+      <a href="mailto:{{section.settings.email_link}}" class="rounded-full  p-1 mr-4">
+        {%render "email" %}
+      </a>
+    </div>
 
         <!-- privacy, FAQ, etc. -->
         <div class="text-right">
@@ -50,7 +61,7 @@ endif
     </div>
     <!-- credits -->
     <div class="flex justify-center items-center w-full pt-4">
-        <p class="font-bold uppercase pt-4">
+        <p class="font-bold pt-4">
             {{ section.settings.footer_text }}
         </p>
     </div>
@@ -82,7 +93,33 @@ endif
     "type": "image_picker",
     "id": "logo_image",
     "label": "Logo"
-    }
+    },
+    {
+    "type":"url",
+    "id":"instagram_link",
+    "label":"Instagram"
+    },
+    {
+    "type":"url",
+    "id":"tiktok_link",
+    "label":"TikTok"
+    },
+    {
+    "type":"url",
+    "id":"twitter_link",
+    "label":"Twitter"
+    },
+    {
+    "type":"url",
+    "id":"facebook_link",
+    "label":"Facebook"
+    },
+    {
+    "type":"text",
+    "id":"email_link",
+    "label":"House of Embrace Enquiry Email:",
+    "default":"info@houseofembrace.com:"
+      }
   ]
 }
 {% endschema %}
