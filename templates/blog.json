@@ -1,9 +1,12 @@
 {
-  "name": "Blog",
   "sections": {
     "template": {
-      "type": "template-blog"
+      "type": "template-blog",
+      "settings": {
+      }
     }
   },
-  "order": ["template"]
+  "order": [
+    "template"
+  ]
 }

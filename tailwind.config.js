@@ -12,7 +12,8 @@ module.exports = {
     extend: {
       height: {
         "94": "22rem",
-        "halfScreen":"40vh"
+        "halfScreen":"40vh",
+        "divide-y-1":"border-top-width: 0px; border-bottom-width: 1px;"
       },
       fontFamily: {
         hoe_Quest: ['Questrial', "sans-serif"],
