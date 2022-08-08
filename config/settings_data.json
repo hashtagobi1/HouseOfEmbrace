@@ -1,5 +1,34 @@
 {
   "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "nav_menu_color": "#CEADDF",
+          "nav_item": "#CEADDF",
+          "mobile_menu_title": "Menu",
+          "menu": "main-menu",
+          "store_logo": "shopify:\/\/shop_images\/Untitled_design.png"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "background_color": "#CEADDF",
+          "footer_text": "Anna Marie-Descartes",
+          "footer_menu": "footer",
+          "logo_image": "shopify:\/\/shop_images\/Untitled_design.png",
+          "instagram_link": "",
+          "tiktok_link": "",
+          "twitter_link": "",
+          "facebook_link": "",
+          "email_link": "info@houseofembrace.com:"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Default": {

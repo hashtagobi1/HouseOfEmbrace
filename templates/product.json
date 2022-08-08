@@ -37,8 +37,7 @@
           "type": "checkout_button",
           "settings": {
           }
-        }
-      },
+        }},
       "block_order": [
         "vendor",
         "title",

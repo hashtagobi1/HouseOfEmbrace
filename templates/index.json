@@ -1,19 +1,28 @@
 {
   "sections": {
+    "featured-articles": {
+      "type": "featured-articles",
+      "settings": {
+        "featured_articles": "featured-articles",
+        "slogan": "Creating confidence for the modern day woman."
+      }
+    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "featured_collection": "all"
+        "title": "Featured Collection",
+        "featured_collection": "all",
+        "number_of_products_showing": 7
       }
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {
-      }
-    },
-    "featured-articles": {
-      "type": "featured-articles",
-      "settings": {
+        "newsletter_title": "join #ClubEmbrace",
+        "newsletter_sign_up": "Sign me up!",
+        "newsletter_image": "shopify:\/\/shop_images\/AMBlazer2.png",
+        "newsletter_description": "join a flourishing group of women dedicated to being better, healthier, + receive discounts of products?",
+        "newsletter_background": "#B9E1A8"
       }
     }
   },
