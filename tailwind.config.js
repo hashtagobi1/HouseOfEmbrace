@@ -17,7 +17,6 @@ module.exports = {
         "heiiii": "height: 80%;"
       },
       fontFamily: {
-        hoe_Quest: ['Questrial', "sans-serif"],
         hoe_Bodoni: ['Bodoni Moda', "serif"]
       },
       colors: {

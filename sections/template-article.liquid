@@ -1,3 +1,4 @@
+
 <article class="py-8" itemscope itemtype="https://schema.org/BlogPosting">
   {% for block in section.blocks %} 
     {% case block.type %}
@@ -44,6 +45,7 @@
                     <div class="max-w-4xl p-3">
                         {{ article.content }}
                     </div>
+
                 </div>
 
             {% when "featured_image" %} 
@@ -208,7 +210,9 @@
                 "name":{{article.author|json}}
             }
     }
-</script>
+</>
+
+
 
 
 <!-- prettier-ignore -->

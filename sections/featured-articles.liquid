@@ -11,6 +11,8 @@ endif
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
+
+
 <style>
     .shine {
         letter-spacing: 2px;
@@ -75,6 +77,12 @@ endif
     .magContainer:hover {
         /* filter: brightness(120%); */
     }
+
+    .articleIMAGE{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 </style>
 
 
@@ -82,21 +90,27 @@ endif
 
 <div class="flex flex-col justify-around items-center mb-2 border-b border-black h-screen">
 
-    <div class="swiper mySwiper h-2/5 w-full ">
+    <div class="swiper h-3/5  mySwiper   w-full ">
         <div class="swiper-wrapper">
             {% for link in featured_articles_linklist %}
                     {% assign shortURL = link.url | remove: "/blogs/"%} 
                     {% assign article = articles[shortURL] %}
                     {% assign imageURL = article.image %} 
-                    <div>
+                    <div class="swiper-slide articleIMAGE relative flex justify-center items-center flex-row ">
+                        <a href="{{article.url}}">
+                            {% if article.image != blank %}
+                            <img 
+                            src="{{imageURL | img_url: "master"}}"
+                            class=" border-2 overflow-hidden  transition duration-500 ease-in-out  hover:blur-sm"/>
+                            {% else %}
+                                         {{'product-1' | placeholder_svg_tag }}
+                            {% endif %}
+                        </a>
                         
-
+                        
+                                                    <h1 class="absolute uppercase font-bold bottom-0 bg-white p-10" >
+                                                        {{article.title}}</h1>
                     </div>
-            <div class="swiper-slide bg-white flex items-center justify-center text-center">10000</div>
-            <div class="swiper-slide bg-white flex items-center justify-center text-center">20000</div>
-            <div class="swiper-slide bg-white flex items-center justify-center text-center">30000</div>
-            <div class="swiper-slide bg-white flex items-center justify-center text-center">40000</div>
-            <div class="swiper-slide bg-white flex items-center justify-center text-center">50000</div>
             {% endfor %}
         </div>
         <div class="swiper-button-next"></div>
@@ -135,6 +149,10 @@ endif
         }
     });
 </script>
+
+<script >
+    // if(swiper-slide-duplicate-active) ? then show thingy
+    </script>
 
 {% schema %}
 {
