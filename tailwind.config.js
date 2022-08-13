@@ -12,9 +12,11 @@ module.exports = {
     extend: {
       height: {
         "94": "22rem",
-        "halfScreen":"50vh",
-        "divide-y-1":"border-top-width: 0px; border-bottom-width: 1px;",
-        "heiiii": "height: 80%;"
+        "halfScreen": "50vh",
+        "divide-y-1": "border-top-width: 0px; border-bottom-width: 1px;",
+        "heiiii": "height: 80%;",
+        "height-90-section": "90vh;",
+        "height-10-header": "10vh;",
       },
       fontFamily: {
         hoe_Bodoni: ['Bodoni Moda', "serif"]

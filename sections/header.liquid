@@ -24,12 +24,7 @@ endif
         border-radius: 0.5em;
     }
 
-    .buttonShadow:hover {
-        filter: drop-shadow(5px 5px 0px #000);
-        transition: all 300ms ease-in-out;
-        border: 0px solid rgb(75 85 99);
-        border-radius: 0.5em;
-    }
+
 
     .buttonShadowALWAYS {
         filter: drop-shadow(5px 5px 0px #000);
@@ -121,7 +116,7 @@ endif
                 {% endfor %}
             </nav>
             <!-- STORE NAME / STORE LOGO -->
-            <!-- Mobile Menu -->
+            <!-- TODO: Mobile Menu -->
             <div class="mr-2 my-2 ml-3 md:hidden ">
                 <button class="  p-2 inline-flex items-center justify-center focus:outline-none" type="button"
                     x-on:click="mobileMenuOpen = true">
@@ -193,12 +188,12 @@ endif
             <!-- MOBILE MENU CONTAINER -->
             <div class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-left md:hidden" x-show="mobileMenuOpen">
 
-                <div class="shadow-lg rounded-lg ring-1 ring-black ring-opacity-5 bg-white w-full">
+                <div class="shadow-lg rounded-lg ring-1 ring-black ring-opacity-5 bg-HOE_BACKGROUND w-full">
                     <div class="p-5 divide-y-2 divide-gray-50">
                         <!-- MOBILE HEADER -->
-                        <div class="flex items-center justify between pb-3">
-                            <div class="">
-                                <h1 class="text-lg text-gray-500">
+                        <div class="flex items-center justify-between pb-3">
+                            <div class="">`
+                                <h1 class="text-lg ">
                                     {{ section.settings.mobile_menu_title }}
                                 </h1>
                             </div>
@@ -211,22 +206,22 @@ endif
                             </div>
                         </div>
                         <!-- MOBILE ITEMS -->
-                        <div class="pt-3">
+                        <div class="pt-3 ">
                             <nav class="grid gap-y-7">
                                 {% for link in section.settings.menu.links %}
                                 {% if link.links != blank %}
                                 {% assign mobile_link_handle = link.handle | replace: "-", "_" %}
-                                <div class="relative" x-data="{ {{ mobile_link_handle }}:false }">
+                                <div class="relative bg-HOE_BACKGROUND" x-data="{ {{ mobile_link_handle }}:false }">
                                     <button x-on:click="{{  mobile_link_handle  }} = ! {{mobile_link_handle}}"
-                                        class="text-base text-gray-500 hover:text-gray-900 flex items center justify-between w-full">
+                                        class="text-base   flex items center justify-between w-full">
                                         <div>{{ link.title }}</div>
                                         {% render "icon-dropdown" %}
                                     </button>
 
-                                    <div x-show="{{ mobile_link_handle }}" class="grid gap-y-7 py-3 items-center">
+                                    <div x-show="{{ mobile_link_handle }}" class="grid gap-y-7 py-3 bg-HOE_MAIN_LIGHT lowercase items-center">
                                         {% for childlink in link.links %}
                                         <a href="{{ childlink.url }}"
-                                            class="-m-3 pt-3 mt-2 flex items-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-50">
+                                            class="-m-3  my-2  flex items-center rounded-md   ">
                                             <span class="ml-6">
                                                 {{ childlink.title }}
                                             </span>
@@ -237,7 +232,7 @@ endif
                                 </div>
                                 {% else %}
 
-                                <a href="{{ link.url }}">{{ link.title }}</a>
+                                <a class="bg-HOE_BACKGROUND" href="{{ link.url }}">{{ link.title }}</a>
                                 {% endif %}
 
                                 {% endfor %}
@@ -255,7 +250,7 @@ endif
 
     <!-- SEARCH -->
 
-    <div class="w-full bg-HOE_MAIN_LIGHT border" x-show="searchBarOpen" x-transition>
+    <div class="w-full bg-HOE_BACKGROUND border" x-show="searchBarOpen" x-transition>
         <div class="flex justify-end">
 
 
