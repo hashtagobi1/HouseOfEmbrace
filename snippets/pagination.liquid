@@ -6,7 +6,8 @@
 
         {% for part in pagination.parts %}
             {% if part.is_link %}
-                <a class="border border-gray-600 hover:bg-gray-900 hover:text-white px-8 py-3 mx-1 rounded-md font-medium" href="{{part.url}}">{{part.title}}</a>
+                <a 
+                class="border border-gray-600 hover:bg-gray-900 hover:text-white px-8 py-3 mx-1 rounded-md font-medium" href="{{part.url}}">{{part.title}}</a>
                 {%else%}
                 <span class="border border-gray-600 bg-gray-900 text-white px-8 py-3 mx-1 rounded-md font-medium">
                     {{part.title}}</span>
@@ -14,7 +15,11 @@
         {% endfor %}
 
         {% if pagination.next %}
-            <a class="border border-gray-600 hover:bg-gray-900 hover:text-white px-8 py-3 mx-1 rounded-md font-medium href=" {{pagination.next.url}} ">{{pagination.next.title}}</a>
+            <a 
+            class="border border-gray-600 hover:bg-gray-900 hover:text-white px-8 py-3 mx-1 rounded-md font-medium"
+            href="{{pagination.next.url}}">
+            {{pagination.next.title}}
+        </a>
         {% endif %}
 
 
