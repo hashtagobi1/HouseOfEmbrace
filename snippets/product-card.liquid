@@ -1,5 +1,6 @@
 <div class="w-full py-6 px-3">
-    <div class="border bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class=" rounded-xl rounded-t-full 
+    = overflow-hidden hover:scale-90 duration-300">
         <a href="{{product.url}}" class="">
             <div class="h-80 overflow-hidden transition duration-500 ease-in-out hover:scale-105">
                 {% if product.featured_image %}
@@ -11,11 +12,11 @@
             </div>
         </a>
 
-        <div class="flex flex-col p-4">
+        <div class="flex flex-col p-4 bg-white border-t-2 border-black rounded-b-2xl">
             {% if section.settings.show_vendor %}
-            <span class="text-sm text-gray-400">{{product.vendor}}</span>
+            <span class="text-sm text-gray-500">{{product.vendor}}</span>
             {% endif %}
-            <a class="text-gray-700 uppercase font-medium hover:underline hover:underline-offset-1"
+            <a class="font-bold uppercase  hover:underline hover:underline-offset-1"
                 href="{{product.url}}">{{product.title}}</a>
             <p class="text-gray-500">{{product.price|money}}</p>
         </div>

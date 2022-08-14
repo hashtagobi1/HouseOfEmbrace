@@ -1,31 +1,24 @@
 
 <article class="py-8" itemscope itemtype="https://schema.org/BlogPosting">
-  {% for block in section.blocks %} 
-    {% case block.type %}
-        {% when "article_title" %}
+    <div class="flex md:flex-row flex-col">
+  
+  
+        <div class="flex flex-col md:w-1/2 w-full items-center justify-center">
 
-            <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center ">
                 <div class="max-w-7xl text-center">
-                <a
-                    href="{{ blog.url }}"
-                    class="text-base uppercase text-gray-500 hover:text-gray-900 font-bold"
-                    >{{ blog.title }}</a
-                >
-                <h1 class="text-4xl md:text-6xl font-medium" itemprop="headline"">{{ article.title }}</h1>
+                    <h1 class="text-4xl md:text-3xl font-medium" itemprop="headline"">{{ article.title }}</h1>
                 </div>
             </div>
-
-        {% when "article_author" %}
-            <div class="flex items-center justify-center" itemscope itemtype="https://schema.org/Person" itemprop="author">
-                <div class="max-w-7xl text-center" >
+                        <div class="flex items-center justify-center" itemscope itemtype="https://schema.org/Person" itemprop="author">
+                <div class="text-md mt-6" >
                 {% if section.settings.enable_author %}
-                <small itemprop="name">{{ article.author }}</small>
+                <small itemprop="name">Written by {{ article.author }}</small>
                 <small hidden itemprop="url">{{article.author | replace:" ","-" | append: ".com"}}</small>
                 {% endif %}
                 </div>
             </div>
 
-            {% when "article_published_date" %}
                 <div class="flex items-center justify-center">
                     <div class="max-w-7xl text-center">
                     {% if section.settings.enable_pub_date %}
@@ -39,18 +32,11 @@
                     {% endif %}
                     </div>
                 </div>
-
-            {% when "article_content" %}
-                <div class="flex items-center justify-center text-justify" itemprop="articleBody">
-                    <div class="max-w-4xl p-3">
-                        {{ article.content }}
-                    </div>
-
-                </div>
-
-            {% when "featured_image" %} 
-                <div 
-                class="max-full border border-black rounded-t-full rounded-xl bg-blue-100 mx-2 md:mx-auto overflow-hidden my-4"
+        </div>
+            <div 
+                class="max-full border border-black 
+                md:rounded- rounded-xl bg-blue-100 mx-2 md:mx-auto 
+                overflow-hidden my-4 md:w-1/2 w-full"
                 itemprop="image"
                 >
                     {% if article.image != blank %}
@@ -64,7 +50,23 @@
                         {% assign placeholder_image = "lifestyle-2" %}
                         {{placeholder_image | placeholder_svg_tag: "w-full h-80 md:h-96 object-cover object-center p-5"}}
                     {% endif %}
+            </div>
+
+                
+    </div>
+    
+  {% for block in section.blocks %} 
+    {% case block.type %}
+
+            {% when "article_content" %}
+                <div class="flex items-center justify-center text-justify" itemprop="articleBody">
+                    <div class="max-w-4xl p-3 bg-white rounded-xl border-black border">
+                        {{ article.content }}
+                    </div>
+
                 </div>
+
+
         {% endcase %} 
     {%endfor %}
 </article>
@@ -78,7 +80,8 @@
                 </h1>
                 {% paginate article.comments by 5 %}
                     {% for comment in article.comments %}
-                        <div class="flex-1 border-black border rounded-xl my-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                        <div 
+                        class="flex-1 border-black  border rounded-xl my-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                             <span class="comment-author">
                                 {{comment.author}}
                             </span>
@@ -174,7 +177,10 @@
                 </div>
                 <div class="px-1 md:flex mb-3">
                     <div class="md:w-full px-3">
-                        <input value="Post Comment! 🚀" type="submit" class="w-full cursor-pointer px-4 py-2 border text-base font-medium text-white bg-gray-900 hover:bg-gray-500">
+                        <input 
+                        value="Post Comment" 
+                        type="submit" 
+                        class="w-full buttonShadow font-bold cursor-pointer px-4 py-2 border text-base  hover:bg-HOE_BACKGROUND">
                     </div>
                 </div>
             </div>

@@ -26,14 +26,7 @@
 <div class="max-w-6xl mx-auto my-8">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div class="product--medias">
-            <div class="hidden md:block">
-                {% for media in product.media %}
-                    <div class="h-100 overflow-hidden p-2">
-                        {%render "product-media", media: media%}
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="md:hidden">
+            <div class="">
                 <div class="swiper h-94">
                     <div class="swiper-wrapper">
 
@@ -156,7 +149,7 @@
                     {% when "checkout_button" %}
                     
                     <div class="my-3">
-                       <button class="w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 rounded-sm my-2" type="submit" name="add"
+                       <button class="w-full buttonShadow px-6 py-4 bg-gray-900  hover:bg-HOE_BODY rounded-sm my-2" type="submit" name="add"
                            {% if selected_variant.available  == false%}
                                disabled
                            {% endif %}
@@ -255,7 +248,10 @@ customElements.define("variant-selector", VariantSelector)
         navigation: {
             prevEl: ".swiper-button-prev",
             nextEl: ".swiper-button-next"
-        }
+        },
+        autoplay: {
+            delay: 2300,
+        },
     })
 </script>
 

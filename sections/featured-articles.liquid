@@ -176,7 +176,7 @@ endif
 
 <div class="flex flex-col justify-around items-center mb-2 border-b border-black h-screen">
 
-    <div class="swiper-container p-0 m-0 h-full w-full border-4 border-red-500 ">
+    <div class="swiper-container p-0 m-0 h-full w-full ">
         <div class="swiper-wrapper p-0 m-0 h-full w-full ">
             {% for link in featured_articles_linklist %}
                     {% assign shortURL = link.url | remove: "/blogs/"%} 
@@ -194,24 +194,23 @@ endif
                                          {{'product-1' | placeholder_svg_tag }}
                             {% endif %}
 
-                            <div class="absolute p-5 space-y-4  flex-col justify-center items-center w-full">
-
-                                <div>
-                                    <button class="capitalize text-xl bg-white rounded-md py-2 px-3">{{blogName}}</button>
+                            <div class="absolute p-5 space-y-4  flex flex-col justify-center items-center w-full">
+<!-- 
+                                <div class="">
+                                    <button class="capitalize  text-xl bg-white rounded-md py-2 px-3">{{blogName}}</button>
                                     
-                                </div>
+                                </div> -->
 
-                                <div>
+                                <div class="mb-8">
 
-                                    <h1 class=" text-white text-4xl uppercase font-bold" >
+                                    <h1 class="italic text-white text-4xl uppercase font-bold" >
                                         {{article.title}}
                                     </h1>
                                 </div>
                                 
 
-                                <div class="my-8">
-
-                                    <a href="{{article.url}}" class=" bg-white py-2 px-3  rounded-lg">
+                                <div class="mt-8">
+                                    <a href="{{article.url}}" class=" bg-white py-2 px-3 mt-8 rounded-lg">
                                             <button class="uppercase">
                                                 Read More
                                             </button>
@@ -224,16 +223,12 @@ endif
             {% endfor %}
         </div>
         <div class="swiper-plugin-pagination"></div>
- <button class="swiper-plugin-navigation-prevEl">PREV</button>
-      <button class="swiper-plugin-navigation-nextEl">NEXT</button>
+ <button class=" swiper-plugin-navigation-prevEl"></>
+      <button class=" swiper-plugin-navigation-nextEl"></button> 
     </div>
 
 
-    <div class="flex border-2 border-red-800 w-full justify-center items-center">
-        <h6 class="text-2xl  font-bold text-center mb-4">
-            {{ section.settings.slogan }}
-        </h6>
-    </div>
+
 </div>
 
 

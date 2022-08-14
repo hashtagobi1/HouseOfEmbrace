@@ -5,7 +5,7 @@
 </style>
 
 <!-- main container -->
-<div class="w-full flex justify-around items-center text-center newsletterBG">
+<div class=" my-4 flex md:mx-12 border-2 border-black rounded-xl justify-around items-center text-center newsletterBG">
     <!-- img -->
     {% if section.settings.newsletter_image %}
     <div class="">
@@ -34,26 +34,28 @@
         <div class="flex flex-col justify-center items-center md:items-end">
 
 
-            <div class="space-y-5">
+            <div class="space-y-5 ">
 
                 <!-- first name box -->
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between flex-col md:flex-row items-center">
                     <label class="mr-5" for="first-name">First Name:</label>
-                    <input class="inputField" placeholder="Anna" type="text" name="contact[first-name] id=" first-name">
+                    <input class="p-1 rounded border-black border" placeholder="Anna" type="text" name="contact[first-name] id=" first-name">
                 </div>
                 
                 
                 <!-- last name box -->
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between flex-col md:flex-row items-center">
                     <label for="email">Email:</label>
-                    <input placeholder="annamarie@gmail.com" autocomplete="email" class="max-w-md inputField" type="email"
+                    <input placeholder="annamarie@gmail.com" 
+                    autocomplete="email" class="p-1 rounded border-black border" type="email"
                     name="contact[email]" id="email" />
                 </div>
             </div>
 
             <!-- sign up button -->
             <div>
-                <input type="submit" class="buttonShadowALWAYS cursor-pointer font-2xl m-5 p-3 rounded"
+                <input 
+                type="submit" class="buttonShadowALWAYS border border-black cursor-pointer font-2xl m-5 p-3 rounded"
                     value="{{ section.settings.newsletter_sign_up }}" />
             </div>
         </div>

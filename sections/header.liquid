@@ -27,7 +27,7 @@ endif
 
 
     .buttonShadowALWAYS {
-        filter: drop-shadow(5px 5px 0px #000);
+        /* filter: drop-shadow(5px 5px 0px #000); */
         background-color: #F6D886;
         transition: all 150ms linear;
     }
@@ -38,21 +38,6 @@ endif
         transition: all 300ms ease-in-out;
     }
 
-    .searchField {
-        filter: drop-shadow(5px 5px 0px #000);
-    }
-
-    .buttonShadowNoTransition {
-        filter: drop-shadow(5px 5px 0px #000);
-        background-color: #F6D886;
-        transition: all 150ms linear;
-    }
-
-    .inputField {
-        filter: drop-shadow(5px 5px 0px #000);
-        border-radius: 1.5em;
-        padding: 0.4em;
-    }
 
     .defaultImage {
         /* width: 100%; */
@@ -63,7 +48,7 @@ endif
 </style>
 <div class="relative font-hoe_Bodoni" x-cloak x-data="{mobileMenuOpen:false, searchBarOpen:false }">
     <div class="">
-        <div class="flex justify-between items-center shadow-2xl px-6 py-6 md:justify-start md:space-x-10 nav-test ">
+        <div class="flex justify-between  items-center rounded-t-3xl border-2 border-black px-2 py-2 md:justify-start md:space-x-10 nav-test ">
 
             <!-- NAV MENU -->
             <!-- FOR SUB MENUS -->
@@ -74,7 +59,7 @@ endif
                 {% assign link_handle = link.handle | replace: "-", "_" %}
                 <div class="relative" x-data=" { {{ link_handle }} :false }">
                     <button x-on:click="{{ link_handle }} = ! {{ link_handle }}"
-                        class="inline-flex items-center buttonShadow  shadow p-3 rounded-xl">
+                        class="inline-flex items-center buttonShadow text-xs  p-3 rounded-xl">
                         {{ link.title }}
                         {% render "icon-dropdown" %}
                     </button>
@@ -93,7 +78,7 @@ endif
                                 {% for childlink in link.links %}
                                 <a href="{{ childlink.url }}" class="-m-3 p-3 flex items-start ">
                                     <div class="subLinkContainer">
-                                        <p class="text-gray-900 text-lg font-extrabold">
+                                        <p class="text-gray-900 text-sm font-normal">
                                             {{ childlink.title }}
                                         </p>
                                     </div>
@@ -106,7 +91,7 @@ endif
                 </div>
 
                 {% else %}
-                <a href="{{ link.url }}" class="text-base text-gray-900">
+                <a href="{{ link.url }}" class=" text-xs text-gray-900">
                     {% render "button-basic", buttonText: link.title %}
 
                 </a>
@@ -138,7 +123,7 @@ endif
 
                 {% else %}
 
-                <h1 class="text-4xl font-black">
+                <h1 class="text-2xl font-semibold">
                     <a href="{{ routes.root_url }}">
                         {{ shop.name }}
                     </a>
@@ -146,14 +131,23 @@ endif
                 {% endif %}
             </div>
 
+            <div class="md:hidden">
+                <button class="p-2 inline-flex items-center justify-center focus:outline-none">
+                    <a href="{{routes.account_login_url}}">
+                        
+                        {%render "icon-account"| %}
+                    </a>
+                </button>
+            </div>
             <div class="mr-2 my-2 ml-3 md:hidden">
                 <button class=" p-2 inline-flex items-center justify-center focus:outline-none" type="button">
-                    <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-gray-500">
 
+                    <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-gray-900">
                         {% render "icon-shopping-bag" %}
                     </a>
                 </button>
             </div>
+
 
 
             <!-- CART BUTTON / ACCOUNT LINKS IF ENABLED -->
@@ -172,12 +166,12 @@ endif
                 <a href="{{ routes.account_url }}" class="">Account</a>
 
                 {{ "Log out" | customer_logout_link | replace: '
-                <a', '<a class="text-base text-gray-600 hover:text-gray-900" ' }} {%else%} <button
-                    class=" font-bold text-xl   py-2 rounded-lg">
+                <a', '<a class="text-base  text-gray-600 hover:text-gray-900" ' }} {%else%} <button
+                    class=" font-bold text-sm   py-2 rounded-lg">
                     {{ "Log in" | customer_login_link | replace: '
                     <a', '<a class="text-base text-gray-600 hover:text-gray-900 whitespace-nowrap"' }} </button>
 
-                        <button class=" font-bold  text-xl py-2 rounded-lg">
+                        <button class=" font-bold  text-sm py-2 rounded-lg">
                             {{ "Register" | customer_register_link | replace: '
                             <a', '<a class="text-base text-gray-600 hover:text-gray-900 whitespace-nowrap"' }} </button>
 
@@ -250,15 +244,15 @@ endif
 
     <!-- SEARCH -->
 
-    <div class="w-full bg-HOE_BACKGROUND border" x-show="searchBarOpen" x-transition>
+    <div class="w-full bg-HOE_BACKGROUND  rounded " x-show="searchBarOpen" x-transition>
         <div class="flex justify-end">
 
 
         </div>
         <div class="h-20 flex rounded-lg justify-center items-center">
             <form action="{{ routes.search_url }}" method="get" class="flex-auto">
-                <div class="relative text-gray-500 px-10 searchField">
-                    <input class="border w-full bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
+                <div class="relative text-gray-500 px-10 ">
+                    <input class="border border-black w-full bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
                         name="q" placeholder="Search" type="search" />
                     <button class="absolute right-0 top-0 mt-2 mr-2 md:mr-20" type="submit">
                         {% render "icon-search" %}

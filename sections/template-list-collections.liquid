@@ -6,8 +6,8 @@
 
             {% for collection in collections %}
                 {% if collection.all_products_count > 0 %}
-                    <div class="w-full shadow-stone-400 shadow-md">
-                        <div class="border bg-white overflow-hidden">
+                    <div class="w-full duration-500 transition ease-in-out hover:scale-90 transform ">
+                        <div class=" overflow-hidden">
                             <a href="{{collection.url}}">
                                 <div class="h-80 overflow-hidden">
                                     {% if collection.featured_image != blank %}
@@ -16,11 +16,18 @@
                                         {% assign collection_image = collection.products.first.image %}
                                     {% endif %}
 
-                                    <img class="w-full h-full object-cover duration-1000 transition ease-in-out hover:scale-125 transform" src="{{collection_image | img_url: "master"}}" alt="{{collection.title | escape}}"/>
+                                    <img 
+                                    class="w-full h-full object-cover 
+                                    rounded-xl
+                                    rounded-t-full
+                                    border border-black
+                                    " 
+                                    src="{{collection_image | img_url: "master"}}" 
+                                    alt="{{collection.title | escape}}"/>
                                 </div>
                             </a>
 
-                            <div class="p-4 bg-gray-200 text-center">
+                            <div class="p-4 bg-white  border-black rounded-b-xl text-center">
                                 <h1 class="text-xl">
                                     {{collection.title}}
                                 </h1>
