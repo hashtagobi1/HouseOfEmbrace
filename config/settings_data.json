@@ -4,20 +4,19 @@
       "header": {
         "type": "header",
         "settings": {
-          "nav_menu_color": "#CEADDF",
-          "nav_item": "#CEADDF",
+          "nav_menu_color": "#f6f6e9",
+          "nav_item": "#fafafa",
           "mobile_menu_title": "Menu",
           "menu": "main-menu",
-          "store_logo": "shopify:\/\/shop_images\/Untitled_design.png"
+          "store_logo": "shopify:\/\/shop_images\/HOE_NEW_FONT_22.png"
         }
       },
       "footer": {
         "type": "footer",
         "settings": {
-          "background_color": "#CEADDF",
+          "background_color": "#f6f6e9",
           "footer_text": "Anna Marie-Descartes",
           "footer_menu": "footer",
-          "logo_image": "shopify:\/\/shop_images\/Untitled_design.png",
           "instagram_link": "",
           "tiktok_link": "",
           "twitter_link": "",
